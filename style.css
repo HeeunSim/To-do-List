@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  background: url(./img/2.png) no-repeat center top / cover;
+}
+
+.container {
+  height: 900px;
+  margin: 29.5px auto;
+  overflow: hidden;
+  --bs-gutter-x: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.945) 0px 54px 55px;
+  box-shadow: 2px 7px 15px 8px rgba(0,0,0,0.3);
+}
+
+.inner{
+  width: 100%;
+  height: 900px;
+  background-color: rgba(0,0,128,0.1);
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+    
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.inputArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.inputArea button {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  border-style: none;
+  font-size: large;
+  background-color: rgba(0, 0, 0, 0);
+  margin-left: 16px;
+}
+
+.tab-wrap {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.062);
+}
+
+.tab-wrap div {
+  padding: 1.1em;
+  font-size: small;
+  margin-left: 10px;
+  
+}
+
+.tab-wrap div:hover {
+  font-weight: bold;
+}
+
+#under-line {
+  width: 53px;
+  height: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  background-color: #000;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  color: #ddd;
+  background-color: rgba(255, 255, 255, 0.062);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  cursor: pointer;
+}
+
+#task-input{
+  width: 400px;
+  height: 50px;
+  padding: 20px 25px;
+  font-size: 0.9em;
+  color: #ddd;
+  background-color: rgba(0,0,128,0.1);
+  border-radius: 50px;
+  border-style: none;
+  backdrop-filter: blur(10px);
+  box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 6px 0px inset,
+    rgba(0, 0, 0, 0.1) -3px -3px 6px 1px inset;
+}
+
+#task-input:focus{
+  outline: none;
+}
+
+.task-done {
+  text-decoration: line-through;
+  transition: width 0.5s ease-in-out;
+}
+
+
+#task-board .check,
+.delete {
+  border-style: none;
+  background-color: initial;
+  padding: 5px;
+}
+
+
+
+
+
+
+/* ------------ snow animation ------------ */
+
+.hero {
+  min-height: 30rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.snow {
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.snow .svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#snow-top-layer {
+  will-change: transform;
+  transform: translateY(-768px);
+  animation: fall 22.5s infinite linear;
+}
+
+#snow-bottom-layer {
+  will-change: transform;
+  transform: translateY(-768px);
+  animation: fall 45s infinite linear;
+}
+
+@keyframes fall {
+  100% {
+    transform: translateY(0);
+  }
+}
