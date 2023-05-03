@@ -1,0 +1,202 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  position: relative;
+  background: url(1.jpeg) no-repeat center / cover;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 550px;
+  max-height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 29.5px auto;
+  --bs-gutter-x: 0;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.945) 0px 54px 55px;
+  box-shadow: 2px 7px 15px 3px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+h1 {
+  display: flex;
+  padding-top: 50px;
+  margin-left: 60px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  color: rgba(48, 0, 48, 0.829);
+  cursor: pointer;
+}
+
+h1 > i {
+  font-size: 20px;
+}
+
+.inputArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.inputArea button {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  border-style: none;
+  font-size: large;
+  background-color: rgba(0, 0, 0, 0);
+  margin-left: 10px;
+  padding: 0;
+}
+
+#task-input {
+  width: 400px;
+  height: 50px;
+  padding: 20px 25px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 0.9em;
+  color: purple;
+  background-color: rgba(0, 0, 128, 0.1);
+  border-radius: 50px;
+  border-style: none;
+  backdrop-filter: blur(10px);
+  box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 6px 0px inset,
+    rgba(0, 0, 0, 0.1) -3px -3px 6px 1px inset;
+}
+
+#task-input:focus {
+  outline: none;
+}
+
+.inner {
+  width: 100%;
+  max-height: 250px;
+  border-radius: 20px;
+  overflow: auto;
+  transition: all ease 1s;
+}
+
+.inner::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-wrap {
+  position: fixed;
+  top: 193px;
+  left: 30px;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.tab-wrap div {
+  width: 100px;
+  height: 40px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: small;
+  display: flex;
+  padding-left: 25px;
+  align-items: center;
+}
+
+#under-line {
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  backdrop-filter: blur(7px);
+  transition: 0.3s ease;
+}
+
+#task-board .check,
+.delete {
+  border-style: none;
+  background-color: initial;
+  padding: 5px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: "Nanum Gothic", sans-serif;
+  color: purple;
+  font-family: "Raleway", sans-serif;
+  background-color: rgba(255, 255, 255, 0.062);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+.task-done {
+  text-decoration: line-through;
+  transition: width 0.5s ease-in-out;
+}
+
+/* ------------ snow animation ------------ */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.snow {
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.snow .svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#snow-top-layer {
+  will-change: transform;
+  transform: translateY(-768px);
+  animation: fall 22.5s infinite linear;
+}
+
+#snow-bottom-layer {
+  will-change: transform;
+  transform: translateY(-768px);
+  animation: fall 45s infinite linear;
+}
+
+@keyframes fall {
+  100% {
+    transform: translateY(0);
+  }
+}
