@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 * {
   margin: 0;
   padding: 0;
@@ -9,49 +11,61 @@ li {
   list-style: none;
 }
 
+
+/* -------------- 초기화 영역 ------------- */
+
+#clock {
+  padding: 0;
+  margin: 10px auto 0;
+  color: aliceblue;
+  font-size: 13px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 500;
+}
+
 body {
-  background: url(./img/2.png) no-repeat center top / cover;
+  position: relative;
+  background: url(1.jpeg) no-repeat center / cover;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .container {
-  width: 600px;
-  height: 900px;
+  width: 550px;
+  max-height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin: 29.5px auto;
-  overflow: hidden;
   --bs-gutter-x: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
+  border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.945) 0px 54px 55px;
-  box-shadow: 2px 7px 15px 8px rgba(0,0,0,0.3);
-}
-
-.inner{
-  width: 100%;
-  height: 900px;
-  background-color: rgba(0,0,128,0.1);
-  border-radius: 30px;
-  backdrop-filter: blur(10px);
-    
+  box-shadow: 2px 7px 15px 3px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
 }
 
 h1 {
   display: flex;
-  justify-content: center;
   padding-top: 50px;
-  font-family: 'Raleway', sans-serif;
+  margin-left: 60px;
+  font-family: "Raleway", sans-serif;
   font-weight: 600;
   font-size: 40px;
-  color: #fff;
+  color: rgba(48, 0, 48, 0.829);
   cursor: pointer;
+}
+
+h1 > i {
+  font-size: 20px;
 }
 
 .inputArea {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px;
+  padding: 20px;
+  margin-bottom: 50px;
 }
 
 .inputArea button {
@@ -61,61 +75,18 @@ h1 {
   border-style: none;
   font-size: large;
   background-color: rgba(0, 0, 0, 0);
-  margin-left: 16px;
-}
-
-.tab-wrap {
-  position: relative;
-  display: flex;
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.062);
-}
-
-.tab-wrap div {
-  padding: 1.1em;
-  font-size: small;
   margin-left: 10px;
-  
-}
-
-.tab-wrap div:hover {
-  font-weight: bold;
-}
-
-#under-line {
-  width: 53px;
-  height: 4px;
-  position: absolute;
-  top: 0;
-  left: 0;
   padding: 0;
-  margin: 0;
-  background-color: #000;
-  border-radius: 5px;
-  transition: 0.3s ease;
 }
 
-.task {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  padding: 15px 25px;
-  border-radius: 5px;
-  color: #ddd;
-  background-color: rgba(255, 255, 255, 0.062);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-  cursor: pointer;
-}
-
-#task-input{
+#task-input {
   width: 400px;
   height: 50px;
   padding: 20px 25px;
+  font-family: "Nanum Gothic", sans-serif;
   font-size: 0.9em;
-  color: #ddd;
-  background-color: rgba(0,0,128,0.1);
+  color: purple;
+  background-color: rgba(0, 0, 128, 0.1);
   border-radius: 50px;
   border-style: none;
   backdrop-filter: blur(10px);
@@ -123,15 +94,53 @@ h1 {
     rgba(0, 0, 0, 0.1) -3px -3px 6px 1px inset;
 }
 
-#task-input:focus{
+#task-input:focus {
   outline: none;
 }
 
-.task-done {
-  text-decoration: line-through;
-  transition: width 0.5s ease-in-out;
+.inner {
+  width: 100%;
+  max-height: 250px;
+  border-radius: 20px;
+  overflow: auto;
+  transition: all ease 1s;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
+.inner::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-wrap {
+  position: fixed;
+  top: 193px;
+  left: 30px;
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.tab-wrap div {
+  width: 100px;
+  height: 40px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: small;
+  display: flex;
+  padding-left: 25px;
+  align-items: center;
+}
+
+#under-line {
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  backdrop-filter: blur(7px);
+  transition: 0.3s ease;
+}
 
 #task-board .check,
 .delete {
@@ -140,17 +149,30 @@ h1 {
   padding: 5px;
 }
 
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: "Nanum Gothic", sans-serif;
+  color: purple;
+  font-family: "Raleway", sans-serif;
+  background-color: rgba(255, 255, 255, 0.062);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
 
-
-
-
+.task-done {
+  text-decoration: line-through;
+  transition: width 0.5s ease-in-out;
+}
 
 /* ------------ snow animation ------------ */
 
 .hero {
-  min-height: 30rem;
-  position: relative;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -189,5 +211,52 @@ h1 {
 @keyframes fall {
   100% {
     transform: translateY(0);
+  }
+}
+
+/* ------ mouse scroll ------- */
+
+.iconmouse {
+  width: 15px;
+  height: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  position: absolute;
+  bottom: 160px;
+  z-index: 1;
+  transform: translate(-50%, 0);
+}
+
+.iconmouse::before {
+  width: 60px;
+  content:"scroll down";
+  display: block;
+  margin-top: -19px;
+  margin-left: -19px;
+  font-size: 4px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.iconmouse .ball {
+  width: 4px;
+  height: 4px;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 0.245rem;
+  animation: Mouse_act 3s ease-out infinite;
+}
+
+@keyframes Mouse_act {
+  0% {
+    transform: translateY(3px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  100% {
+    transform: translateY(3px);
   }
 }

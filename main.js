@@ -11,15 +11,20 @@ let filterList = [];
 
 let taskInput = document.querySelector("#task-input");
 let addBtn = document.querySelector("#add-btn");
+let underLine = document.getElementById("under-line")
 let tabs = document.querySelectorAll(".tab-wrap div");
-console.log(tabs);
 
 addBtn.addEventListener("click", addTask);
-taskInput.addEventListener("keyup", function(event){
-  if (window.event.keyCode == 13)
-  addTask()
+taskInput.addEventListener("keyup", function (event) {
+  if (window.event.keyCode == 13) {
+    addTask();
+    taskInput.value = "";
+  }
   // 그리고 html 태그에 onkeyup="enterkey();"를 추가해서 사용
-})
+});
+taskInput.addEventListener("focus", function () {
+  taskInput.value == null;
+});
 
 for (let i = 1; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function (event) {
@@ -34,8 +39,8 @@ function addTask() {
     isComplete: false,
   };
   taskList.push(task);
-  console.log(taskList);
   render();
+  taskInput.value = "";
 }
 
 function render() {
@@ -52,7 +57,7 @@ function render() {
         <div class="task">
           <div class="task-done">${list[i].taskContent}</div>
           <div class="button">
-            <button class="check" onClick="toggleComplete('${list[i].id}')"><i class="fa-solid fa-check"></i></button>
+            <button class="check" onClick="toggleComplete('${list[i].id}')"><i class="fa-solid fa-arrows-rotate"></i></button>
             <button class="delete" onClick="deleteTask('${list[i].id}')"><i class="fa-solid fa-xmark"></i></button>
           </div>
         </div>`;
@@ -78,8 +83,7 @@ function toggleComplete(id) {
       break;
     }
   }
-  render();
-  console.log(taskList);
+  filter();
 }
 
 function deleteTask(id) {
@@ -89,35 +93,31 @@ function deleteTask(id) {
       break;
     }
   }
-  render();
+  filter()
 }
 
 function filter(event) {
   filterList = [];
-  mode = event.target.id;
-  document.getElementById("under-line").style.width =
-    event.target.offsetWidth + "px";
-  document.getElementById("under-line").style.top = "0px";
-  document.getElementById("under-line").style.left =
-    event.target.offsetLeft + "px";
-  if (mode == "all") {
-    render();
-  } else if (mode == "continue") {
+  if(event){
+    mode = event.target.id;
+    underLine.style.width = event.target.offsetWidth + "px";
+    underLine.style.top = "0px";
+    underLine.style.left = event.target.offsetLeft + "px";
+  }
+  if (mode == "continue") {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete == false) {
         filterList.push(taskList[i]);
       }
     }
-    render();
   } else if (mode == "complete") {
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].isComplete == true) {
         filterList.push(taskList[i]);
       }
     }
-    render();
   }
-  console.log(filterList);
+  render()
 }
 
 function randomIdgenerate() {
